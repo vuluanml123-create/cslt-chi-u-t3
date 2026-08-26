@@ -329,7 +329,178 @@ namespace cslt_chiều_t3.session_2
                     return sb.ToString().Normalize(NormalizationForm.FormC).Replace('đ', 'd').Replace('Đ', 'D');
         }
     }*/
+
+    /*class Bai7
+    {
+        static void Main()
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            Console.Write("Nhập quãng đường (km): ");
+            double distance = double.Parse(Console.ReadLine());
+
+            Console.Write("Nhập mức tiêu thụ trung bình (L/100km): ");
+            double fuelRate= double.Parse(Console.ReadLine());
+
+            Console.Write("Nhập giá xăng (VNĐ/Lít): ");
+            decimal fuelPrice = decimal.Parse(Console.ReadLine());
+
+            Console.Write("Nhập số người đi: ");
+            int peopleCount = int.Parse(Console.ReadLine());
+
+            double totalFuel = (distance / 100.0) * fuelRate;
+            decimal totalCost = (decimal)totalFuel * fuelPrice;
+            decimal rawcostPerson = totalCost / peopleCount;
+            decimal costPerPerson = Math.Ceiling(rawcostPerson / 1000m) * 1000m;
+
+            Console.WriteLine("\n--- OUTPUT ---");
+            Console.WriteLine($"Tổng nhiên liệu tiêu thụ: {totalFuel:F2} Lít");
+            Console.WriteLine($"Tổng chi phí xăng dầu: {Math.Round(totalCost):N0} VNĐ");
+            Console.WriteLine($"Chi phí mỗi người: {costPerPerson:N0} VNĐ");
+        }
+    }*/
+
+    /*class Bai9
+    {
+        static void Main()
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            Console.Write("Nhập Lương Gross (VNĐ): ");
+            decimal gross = decimal.Parse(Console.ReadLine());
+
+            Console.Write("Số người phụ thuộc: ");
+            int dependents = int.Parse(Console.ReadLine());
+
+            decimal insurance = gross * 0.105m;
+
+            decimal taxableIncome = gross - insurance - 11000000m - (dependents * 4400000m);
+            if (taxableIncome < 0) taxableIncome = 0;
+
+            decimal personalTax = CalculatePIT(taxableIncome);
+
+            decimal netSalary = gross - insurance - personalTax;
+
+            Console.WriteLine("\n--- OUTPUT ---");
+            Console.WriteLine($"Giảm trừ Bảo hiểm (10.5%): {insurance:N0} VNĐ");
+            Console.WriteLine($"Thu nhập chịu thuế: {taxableIncome:N0} VNĐ");
+            Console.WriteLine($"Thuế TNCN phải nộp: {personalTax:N0} VNĐ");
+            Console.WriteLine($"LƯƠNG NET THỰC NHẬN: {netSalary:N0} VNĐ");
+        }
+
+        static decimal CalculatePIT(decimal taxableIncome)
+        {
+            if (taxableIncome <= 0) return 0;
+
+            decimal tax = 0;
+            if (taxableIncome > 5000000m)
+            {
+                tax += 5000000m * 0.05m;
+                taxableIncome -= 5000000m;
+            }
+            else return tax + taxableIncome * 0.05m;
+
+            if (taxableIncome > 5000000m)
+            {
+                tax += 5000000m * 0.10m;
+                taxableIncome -= 5000000m;
+            }
+            else return tax + taxableIncome * 0.10m;
+
+            if (taxableIncome > 8000000m)
+            {
+                tax += 8000000m * 0.15m;
+                taxableIncome -= 8000000m;
+            }
+            else return tax + taxableIncome * 0.15m;
+
+            return tax;
+        }
+    }*/
+
+    /*class Bai11
+    {
+        static void Main()
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            Console.Write("Số tiền gửi: ");
+            decimal principal = decimal.Parse(Console.ReadLine());
+
+            Console.Write("Lãi suất năm (%): ");
+            double annualRate = double.Parse(Console.ReadLine());
+
+            Console.Write("Thời gian gửi (tháng): ");
+            int months = int.Parse(Console.ReadLine());
+
+            decimal simpleInterest = principal * (decimal)(annualRate / 100) * (months / 12.0m);
+
+            double ratePerMonth = annualRate / 100 / 12;
+            double compoundAmountDouble = (double)principal * Math.Pow(1 + ratePerMonth, months);
+            decimal compoundInterest = (decimal)compoundAmountDouble - principal;
+
+            decimal difference = compoundInterest - simpleInterest;
+
+
+            Console.WriteLine("\n--- OUTPUT ---");
+            Console.WriteLine($"Tổng tiền lãi (Lãi đơn): {simpleInterest:N0} VNĐ");
+            Console.WriteLine($"Tổng tiền lãi (Lãi kép): {compoundInterest:N0} VNĐ");
+            Console.WriteLine($"Lợi nhuận chênh lệch: {difference:N0} VNĐ (Lãi kép tối ưu hơn)");
+        }
+    }*/
+
+    /*class Bai14
+    {
+        static void Main()
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            Console.Write("Nhập chuỗi số: ");
+            string input = Console.ReadLine();
+
+            if (!int.TryParse(input, out int number))
+            {
+                Console.WriteLine("Lỗi: Chuỗi nhập vào không phải số nguyên hợp lệ!");
+                return;
+            }
+
+            Console.WriteLine("\n--- OUTPUT ---");
+            Console.WriteLine($"Kiểm tra Parse: Thành công! Giá trị int = {number}");
+
+            if (number >= byte.MinValue && number <= byte.MaxValue)
+                Console.WriteLine("Phù hợp kiểu byte: Có (Vừa vặn trong dải 0-255)");
+            else if (number >= short.MinValue && number <= short.MaxValue)
+                Console.WriteLine("Phù hợp kiểu short: Có (Vừa vặn trong dải -32,768 đến 32,767)");
+            else
+                Console.WriteLine("Phù hợp kiểu int: Có (Vừa vặn trong dải Int32)");
+
+            int sumDigits = 0;
+            string absoluteStr = Math.Abs(number).ToString();
+            for (int i = 0; i < absoluteStr.Length; i++)
+            {
+                sumDigits += absoluteStr[i] - '0';
+            }
+
+            string formattedSum = string.Join(" + ", absoluteStr.ToCharArray());
+            Console.WriteLine($"Tổng các chữ số: {formattedSum} = {sumDigits}");
+
+            try
+            {
+                checked
+                {
+                    int testValue = number;
+                    testValue = testValue + 0;
+                }
+                Console.WriteLine("Kiểm tra Tràn số: An toàn trong phạm vi int32.");
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine("Kiểm tra Tràn số: Phát hiện tràn số (Overflow Exception) trong khối checked!");
+            }
+        }
+    }*/
 }
+
 
 
 
