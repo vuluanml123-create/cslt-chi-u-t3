@@ -4,7 +4,7 @@ using System.Text;
 
 namespace cslt_chiều_t3.session_4
 {
-    internal class BT_LMS__5_2
+    /*internal class BT_LMS__5_2
     {
         static void Main()
         {
@@ -76,5 +76,5 @@ namespace cslt_chiều_t3.session_4
                 Console.WriteLine($"\nGame kết thúc! Số tiền cuối cùng của bạn: {tien:N0} đồng.");
             }
         }
-    }
+    }*/
 }
