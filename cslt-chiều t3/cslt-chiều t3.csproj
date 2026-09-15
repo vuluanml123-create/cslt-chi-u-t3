@@ -6,6 +6,7 @@
     <RootNamespace>cslt_chiều_t3</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <StartupObject></StartupObject>
   </PropertyGroup>
 
 </Project>
