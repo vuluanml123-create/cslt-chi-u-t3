@@ -156,7 +156,7 @@ namespace cslt_chiều_t3.session_8
         }
     }*/
 
-    struct Member
+    /*struct Member
     {
         public string Id;
         public string Name;
@@ -318,5 +318,5 @@ namespace cslt_chiều_t3.session_8
                 Console.WriteLine("\nChưa có dữ liệu thành viên trong hệ thống.");
             }
         }
-    }
+    }*/
 }
